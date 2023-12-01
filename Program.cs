@@ -21,7 +21,8 @@ namespace CreateCalendar
                 var ws = wb.Worksheet("Underviserplan - frem i tid");
 
                 int row = 2;
-                var calendar = new Calendar();  
+                var calendar = new Calendar(); 
+                calendar.Name = "Undervisning";
                 while (!string.IsNullOrEmpty(ws.Cell(row, 1).Value.ToString()))
                 {
                     var e = new CalendarEvent();
