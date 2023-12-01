@@ -23,6 +23,7 @@ namespace CreateCalendar
                 int row = 2;
                 var calendar = new Calendar(); 
                 calendar.Name = "Undervisning";
+                calendar.Properties.Add(new CalendarProperty("X-WR-CALNAME", "Undervisning"));
                 while (!string.IsNullOrEmpty(ws.Cell(row, 1).Value.ToString()))
                 {
                     var e = new CalendarEvent();
@@ -40,7 +41,8 @@ namespace CreateCalendar
                 
                 var serializer = new CalendarSerializer();
                 var serializedCalendar = serializer.SerializeToString(calendar);
-                File.WriteAllText("data/calendar.ics", serializedCalendar, Encoding.UTF8);
+
+                File.WriteAllText("data/calendar.ics", serializedCalendar, new UTF8Encoding(false));
             }
         }
     }
